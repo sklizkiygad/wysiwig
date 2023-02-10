@@ -1,0 +1,30 @@
+.main-buttons__item{
+    width: 42px;
+    height: 38px;
+    background: #282828;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.main-buttons{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.main-buttons__item-text a{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    color: #639EFF;
+    cursor: pointer;
+
+}
+
+.main-buttons__item:hover{
+
+    background: #313131;
+
+}
