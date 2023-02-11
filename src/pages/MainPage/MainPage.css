@@ -25,3 +25,10 @@
 
     max-width: 621px;
 }
+
+@media (max-width:635px) {
+
+    .main-page{
+        padding: 10px 10px;
+    }
+}
