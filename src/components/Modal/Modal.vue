@@ -5,11 +5,11 @@
 
             <div class="modal__content__input"  :style="{color: isError ? 'red':'black'}">
             <p>URL:</p>
-            <input @click="isError=false" :style="{color: isError ? 'red':'black', borderColor:isError ? 'red':'black'}" type="text" v-model="imageUrl" placeholder="Введите URL адрес изображения"/>
+            <input @input="inputImage" @click="isError=false" :style="{color: isError ? 'red':'black', borderColor:isError ? 'red':'black'}" type="text" v-model="imageUrl" placeholder="Введите URL адрес изображения"/>
             </div>
 
             <div class="modal__content__buttons">
-                <button @click="inputImage">Вставить</button>
+                <button @click="inputImageDone">Вставить</button>
                 <button @click="closeModal">Отменить</button>
             </div>
 
@@ -40,16 +40,29 @@
             closeModal(){
                 this.imageUrl=''
                 this.isError=false
+                let currentImage= document.querySelector('.main-page__show-result__insert-image[data-id="'+(this.$store.state.currentIdImage-1)+'"]');
+                currentImage.remove()
+                this.$store.commit('setCurrentIdImage',"remove")
                 this.$store.commit('setIsOpenModal',false)
             },
             inputImage(){
+
                 if(this.isValidHttpUrl(this.imageUrl)){
-                    this.$store.commit('setInputImageUrl',this.imageUrl)
+                    console.log(this.$store.state.currentIdImage)
+                   let currentImage= document.querySelector('.main-page__show-result__insert-image[data-id="'+(this.$store.state.currentIdImage-1)+'"]');
+                    currentImage.src=this.imageUrl;
+                    console.log(currentImage)
                 }
                 else{
                     this.isError=true
                 }
 
+            },
+
+            inputImageDone(){
+                this.imageUrl=''
+                this.isError=false
+                this.$store.commit('setIsOpenModal',false)
             },
 
 
