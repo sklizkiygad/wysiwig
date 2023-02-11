@@ -58,6 +58,7 @@
                 let mainTextarea=document.getElementById('mainTextarea')
                 this.htmlContent=mainTextarea.innerHTML
                 this.htmlContent=this.htmlContent.replace(/data-v-be6b764a=""/g,'')
+                this.htmlContent=this.htmlContent.replace(/data-v-04b4c31e=""/g,'')
                 this.htmlContent=this.format(this.htmlContent)
 
 
