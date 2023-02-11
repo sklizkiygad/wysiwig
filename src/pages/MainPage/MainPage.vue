@@ -15,7 +15,7 @@
                 <h1>Смотрите какие обезьянки</h1>
             </div>
             <div>
-                <img src="../../assets/images/monkey.png" alt="">
+                <img class="main-page__show-result__insert-image" src="../../assets/images/monkey.png" alt="">
             </div>
 
             <div>

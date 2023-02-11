@@ -3,15 +3,17 @@
     <div class="html-viewer" v-if="isHtmlViewer" @click="closeHtmlViewer">
         <div class="html-viewer__content" @click.stop>
 
-            <pre ref="textToCopy">
-                {{htmlContent}}
-            </pre>
-
             <div class="html-viewer__content__buttons">
                 <button @click="copyToClipboard">Скопировать в буфер обмена</button>
                 <button @click="downloadHtml">Скачать файлом</button>
 
             </div>
+
+            <pre ref="textToCopy">
+                {{htmlContent}}
+            </pre>
+
+
         </div>
     </div>
     </transition>
@@ -28,12 +30,40 @@
         }
         },
         methods:{
+
+             format(html) {
+        let tab = '\t';
+        let result = '';
+        let indent= '';
+
+        html.split(/>\s*</).forEach(function(element) {
+            if (element.match( /^\/\w/ )) {
+                indent = indent.substring(tab.length);
+            }
+
+            result += indent + '<' + element + '>\r\n';
+
+            if (element.match( /^<?\w[^>]*[^\/]$/ ) && !element.startsWith("input")  ) {
+                indent += tab;
+            }
+        });
+
+        return result.substring(1, result.length-3);
+    },
+
+
             insertHtmlContent(){
+                // let mainTextarea=document.getElementById('mainTextarea')
+                // this.htmlContent=mainTextarea.innerHTML
                 let mainTextarea=document.getElementById('mainTextarea')
                 this.htmlContent=mainTextarea.innerHTML
+                this.htmlContent=this.htmlContent.replace(/data-v-be6b764a=""/g,'')
+                this.htmlContent=this.format(this.htmlContent)
+
 
 
             },
+
             closeHtmlViewer(){
                 this.$store.commit('setIsHtmlViewer',false)
             },
@@ -59,12 +89,15 @@
 
         },
 
-        mounted() {
-            this.insertHtmlContent()
+        watch:{
+            isHtmlViewer(){
+                this.insertHtmlContent()
+            }
         },
 
         computed: mapState({
             isHtmlViewer: state => state.isHtmlViewer,
+
         }),
 
     }
@@ -81,18 +114,18 @@
     right: 0;
     background: rgba(0,0,0,0.5);
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 }
 
 .html-viewer__content{
     background: rgba(256,256,256,0.8);
-    width: 80%;
-    margin: 10px 0;
+    width: 100%;
+
     overflow-y: auto;
     border-radius: 4px;
     padding: 10px 20px;
-    max-height: 100%;
+    max-height: 55%;
 }
 
 .html-viewer__content pre{

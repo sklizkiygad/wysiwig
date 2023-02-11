@@ -49,10 +49,10 @@
             inputImage(){
 
                 if(this.isValidHttpUrl(this.imageUrl)){
-                    console.log(this.$store.state.currentIdImage)
+
                    let currentImage= document.querySelector('.main-page__show-result__insert-image[data-id="'+(this.$store.state.currentIdImage-1)+'"]');
                     currentImage.src=this.imageUrl;
-                    console.log(currentImage)
+
                 }
                 else{
                     this.isError=true
@@ -93,7 +93,7 @@
         right: 0;
         background: rgba(0,0,0,0.5);
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
     }
 
@@ -105,7 +105,7 @@
         background: rgba(256,256,256,0.8);
         gap: 10px;
         height: 175px;
-        width: 300px;
+        width: 100%;
         border-radius: 4px;
         padding: 10px 20px;
     }
