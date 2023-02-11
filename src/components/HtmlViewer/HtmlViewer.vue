@@ -3,9 +3,15 @@
     <div class="html-viewer" v-if="isHtmlViewer" @click="closeHtmlViewer">
         <div class="html-viewer__content" @click.stop>
 
-            <pre>
+            <pre ref="textToCopy">
                 {{htmlContent}}
             </pre>
+
+            <div class="html-viewer__content__buttons">
+                <button @click="copyToClipboard">Скопировать в буфер обмена</button>
+                <button @click="downloadHtml">Скачать файлом</button>
+
+            </div>
         </div>
     </div>
     </transition>
@@ -26,10 +32,30 @@
                 let mainTextarea=document.getElementById('mainTextarea')
                 this.htmlContent=mainTextarea.innerHTML
 
+
             },
             closeHtmlViewer(){
                 this.$store.commit('setIsHtmlViewer',false)
+            },
+            copyToClipboard(){
+                navigator.clipboard.writeText(this.htmlContent)
+                    .then(() => {
+                        alert('Скопирован в буфер обмена')
+                    })
+                    .catch(err => {
+                        alert("Не удалось скопировать:"+ err);
+                    });
+            },
+            downloadHtml(){
+
+                let linkDownload=document.createElement("a");
+                const documentDownload = new Blob([this.htmlContent], {type: 'text'});
+                linkDownload.href=URL.createObjectURL(documentDownload)
+                linkDownload.download = "example.html";
+                linkDownload.click();
             }
+
+
 
         },
 
@@ -66,10 +92,23 @@
     overflow-y: auto;
     border-radius: 4px;
     padding: 10px 20px;
+    max-height: 100%;
 }
 
 .html-viewer__content pre{
     max-width: 100%;
     white-space: pre-wrap;
 }
+
+.html-viewer__content__buttons {
+    display: flex;
+    gap: 10px;
+}
+    .html-viewer__content__buttons button{
+        background: #282828;
+        border-radius: 4px;
+        cursor: pointer;
+        color: rgba(256,256,256,0.8);
+        padding: 5px;
+    }
 </style>

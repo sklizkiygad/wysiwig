@@ -3,9 +3,10 @@
     <div class="modal" v-if="isOpenModal" @click="closeModal">
         <div class="modal__content" @click.stop>
 
+
             <div class="modal__content__input"  :style="{color: isError ? 'red':'black'}">
-            <p>URL:</p>
-            <input @input="inputImage" @click="isError=false" :style="{color: isError ? 'red':'black', borderColor:isError ? 'red':'black'}" type="text" v-model="imageUrl" placeholder="Введите URL адрес изображения"/>
+                <p>Введите URL адрес изображения для вставки</p>
+            <input @input="inputImage" @click="isError=false" :style="{color: isError ? 'red':'black', borderColor:isError ? 'red':'black'}" type="text" v-model="imageUrl" placeholder="URL"/>
             </div>
 
             <div class="modal__content__buttons">
@@ -111,6 +112,7 @@
 
     .modal__content__input{
         display: flex;
+        flex-direction: column;
         gap: 10px;
         align-items: center;
     }
