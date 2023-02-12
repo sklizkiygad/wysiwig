@@ -53,7 +53,7 @@
             openModal(){
                 document.execCommand('insertHTML', false, `<img class="main-page__show-result__insert-image" data-id="${this.$store.state.currentIdImage}" src="${require('../../assets/images/placeholder-img.jpg')}"/>` + window.getSelection().toString())
                 let currentImage= document.querySelector('.main-page__show-result__insert-image[data-id="'+(this.$store.state.currentIdImage)+'"]');
-                console.log(currentImage)
+
                 if(currentImage){
                     this.$store.commit('setCurrentIdImage','add')
                     this.$store.commit('setIsOpenModal',true)

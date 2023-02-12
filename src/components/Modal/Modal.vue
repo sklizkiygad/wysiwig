@@ -48,22 +48,28 @@
             },
             inputImage(){
 
-                if(this.isValidHttpUrl(this.imageUrl)){
-
+                if(this.isValidHttpUrl(this.imageUrl) ){
                    let currentImage= document.querySelector('.main-page__show-result__insert-image[data-id="'+(this.$store.state.currentIdImage-1)+'"]');
                     currentImage.src=this.imageUrl;
-
                 }
                 else{
                     this.isError=true
+
                 }
 
             },
 
             inputImageDone(){
-                this.imageUrl=''
-                this.isError=false
-                this.$store.commit('setIsOpenModal',false)
+                if(this.isValidHttpUrl(this.imageUrl)){
+                    this.imageUrl=''
+                    this.isError=false
+                    this.$store.commit('setIsOpenModal',false)
+                }
+                else{
+                    this.isError=true
+                }
+
+
             },
 
 
