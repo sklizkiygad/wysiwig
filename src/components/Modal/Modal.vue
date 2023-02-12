@@ -85,56 +85,6 @@
 </script>
 
 <style scoped>
-    .modal{
-        position: fixed;
-        top:0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0,0,0,0.5);
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-    }
-
-    .modal__content{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        background: rgba(256,256,256,0.8);
-        gap: 10px;
-        height: 175px;
-        width: 100%;
-        border-radius: 4px;
-        padding: 10px 20px;
-    }
-
-    .modal__content__input{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .modal__content__input input{
-       outline: none;
-        border: none;
-    }
-
-    .modal__content__buttons{
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .modal__content__buttons button{
-
-        background: #282828;
-        border-radius: 4px;
-        cursor: pointer;
-        color: rgba(256,256,256,0.8);
-        padding: 5px;
-    }
+    @import "./Modal.css";
 
 </style>

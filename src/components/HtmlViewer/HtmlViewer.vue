@@ -2,7 +2,11 @@
     <transition>
         <div class="html-viewer" v-if="isHtmlViewer" @click="closeHtmlViewer">
             <div class="html-viewer__content" @click.stop>
-                <div class="close-icon"><span @click="closeHtmlViewer">X</span></div>
+                <div class="close-icon"><span @click="closeHtmlViewer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg></span></div>
 
 
 
@@ -88,46 +92,6 @@
 
 <style scoped>
     @import "./HtmlViewer.css";
-    .html-viewer{
-        position: fixed;
-        top:0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0,0,0,0.5);
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-    }
-    .html-viewer__content{
-        background: rgba(0,0,0,1);
-        width: 100%;
-        overflow-y: auto;
-        border-radius: 4px;
-        padding: 10px 20px;
-        height: 100%;
-    }
-    .html-viewer__content pre{
-        max-width: 100%;
-        white-space: pre-wrap;
-        color: #EAEAEA;
-        font-family: "Bauhaus 93";
-    }
-    .html-viewer__content__buttons {
-        display: flex;
-        gap: 10px;
-    }
-    .html-viewer__content__buttons button{
-        background: #282828;
-        border-radius: 4px;
-        cursor: pointer;
-        color: rgba(256,256,256,0.8);
-        padding: 5px;
-    }
-    .close-icon{
-        text-align: right;
-        margin: 10px;
-        cursor: pointer;
-        color: #EAEAEA;
-    }
+
+
 </style>

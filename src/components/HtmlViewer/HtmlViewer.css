@@ -1,0 +1,41 @@
+.html-viewer{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,1);
+    padding: 20px;
+}
+
+.html-viewer__content pre{
+    max-width: 100%;
+    white-space: pre-wrap;
+    color: #EAEAEA;
+    font-family: Consolas, sans-serif;
+    height: calc(100vh - 145px);
+    overflow-y: auto;
+    font-size: 14px;
+}
+.html-viewer__content__buttons {
+    display: flex;
+    gap: 10px;
+}
+.html-viewer__content__buttons button{
+    background: #282828;
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgba(256,256,256,0.8);
+    padding: 5px;
+}
+.close-icon{
+    text-align: right;
+    margin: 20px;
+    color: #EAEAEA;
+}
+
+.close-icon svg{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
