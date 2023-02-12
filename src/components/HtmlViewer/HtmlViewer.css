@@ -13,9 +13,10 @@
     white-space: pre-wrap;
     color: #EAEAEA;
     font-family: Consolas, sans-serif;
-    height: calc(100vh - 145px);
+    height: calc(100vh - 170px);
     overflow-y: auto;
     font-size: 14px;
+    background: #171919;
 }
 .html-viewer__content__buttons {
     display: flex;
